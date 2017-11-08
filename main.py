@@ -48,7 +48,7 @@ class MainApp(object):
         self.result_frame = tk.Frame(self.root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH)
 
     def result_element(self, frame):
-        
+
     def search_frame(self):
         self.search_frame = tk.Frame(self.root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH)
         self.search_element(self.search_frame)
