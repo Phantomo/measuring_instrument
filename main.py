@@ -1,69 +1,81 @@
 import tkinter as tk
-from numpy import genfromtext
+#from numpy import genfromtxt
 
-WINDOW_HEIGHT = 600
-WINDOW_WIDTH = 600
-
-class MainApp(object):
-
-    def __init__(self, root, database_file):
-        self.root = root
-        try:
-            self.database = genfromtext(database_file, delimiter=',')
-        except Exception:
-            print("Database file not valid or not exist. Check file and restart program")
-            exit()
-
-    def show_result(self, instrument_list):
-        self.search_frame_deactivate()
+WINDOW_HEIGHT = 800
+WINDOW_WIDTH = 800
+SEARCH_VARIANT = [
+    "thread",
+    "diameter",
+    "main sizes",
+    "angle"
+]
 
 
-    def search_instrument(self, size, precision):
-        size = int(size)
-        precision = int(precision)
-        if not size:
-            tk.Message(self.root, text="Parameter size mandatory. Please entry size!!!")
-        elif size < 0:
-            tk.Message(self.root, text="Size must be positive. Please entry correct size!!!")
-        if not precision:
-            precision = 0
-        return self.database
+class MainApp(tk.Tk):
 
-    def search_element(self, frame):
-        self.search_button = tk.Button(frame, text='Find', command=self.search_instrument())
+    def __init__(self, *args, **kwargs):
+        self.frames = {}
+        tk.Tk.__init__(self, *args, **kwargs)
+        container = tk.Frame(self)
+        container.pack(side="top", fill="both", expand=True)
+        container.grid_rowconfigure(0, weight=1)
+        container.grid_columnconfigure(0, weight=1)
+        for F in (ResultPage, StartPage, SearchPage):
+            frame = F(container, self)
+            self.frames[F] = frame
+            frame.grid(row=0, column=0, sticky='nsew')
+        self.show_frame(StartPage)
 
-        self.size_label = tk.Label(frame, text="Entry measure place size")
-        self.size_var = tk.StringVar()
-        self.search_size_entry = tk.Entry(frame, textvariable=self.size_var)
-        self.size_label.place(x=100, y=90)
-        self.search_size_entry.place(x=100, y=100)
+    def show_frame(self, cont):
+        frame = self.frames[cont]
+        frame.tkraise()
 
-        self.precision_label = tk.Label(frame, text="Entry precision")
-        self.precision_var = tk.StringVar()
-        self.search_precision = tk.Entry(frame, textvariablel=self.precision_var)
-        self.precision_label.place(x=100, y=140)
-        self.search_precision.place(x=100, y=150)
 
-    def result_frame(self):
-        self.result_frame = tk.Frame(self.root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH)
+class ResultPage(tk.Frame):
 
-    def result_element(self, frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        listbox = tk.Listbox(self, height=WINDOW_HEIGHT - 200)
+        listbox.pack(side="left")
+        for elem in ["test", "sdgdgdf", "asfsfsdf"]:
+            listbox.insert(tk.END, elem)
 
-    def search_frame(self):
-        self.search_frame = tk.Frame(self.root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH)
-        self.search_element(self.search_frame)
+        button = tk.Button(self, text="StartPage",
+                           command=lambda: controller.show_frame(StartPage))
+        button.pack()
 
-    def search_frame_activate(self):
-        self.search_frame.pack()
 
-    def search_frame_deactivate(self):
-        self.search_frame.pack_forget()
+class StartPage(tk.Frame):
 
-win = tk.Tk()
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="Start page")
+        label.pack()
+        button = tk.Button(self, text="Result",
+                           command=lambda: controller.show_frame(SearchPage))
+        button.pack()
+
+
+class SearchPage(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="Search page")
+        label.pack()
+
+        param = tk.StringVar(self)
+        param.set(SEARCH_VARIANT[0])
+        choose_box = tk.OptionMenu(self, param, *SEARCH_VARIANT)
+        choose_box.pack()
+        param.trace('w', lambda: self.change_param(param.get()))
+
+    def change_param(self, *args):
+        print(args)
+
+
+win = MainApp()
 win.title('Measuring instrument')
 win.geometry(str(WINDOW_HEIGHT)+'x'+str(WINDOW_WIDTH))
 win.resizable(False, False)
-
-gui = MainApp(win, 'measuring_instrument.csv')
 
 win.mainloop()
