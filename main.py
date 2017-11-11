@@ -60,17 +60,23 @@ class SearchPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.param_frame = {}
+        self.grid_rowconfigure(3)
         label = tk.Label(self, text="Search page")
-        label.pack()
-
-        param = tk.StringVar(self)
-        param.set(SEARCH_VARIANT[0])
-        choose_box = tk.OptionMenu(self, param, *SEARCH_VARIANT)
-        choose_box.pack()
-        param.trace('w', lambda: self.change_param(param.get()))
+        label.grid(row=1, ipadx=WINDOW_WIDTH / 2 - 50, ipady=30)
+        self.param = tk.StringVar(self)
+        self.param.set(SEARCH_VARIANT[0])
+        choose_box = tk.OptionMenu(self, self.param, *SEARCH_VARIANT)
+        choose_box.grid(row=2)
+        self.param.trace('w', self.change_param)
+        #thread instrument
+        self.param_frame[SEARCH_VARIANT[0]] = tk.Frame(self)
 
     def change_param(self, *args):
-        print(args)
+        print(self.param.get())
+
+    def change_param_frame(self, param):
+
 
 
 win = MainApp()
