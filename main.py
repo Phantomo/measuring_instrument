@@ -1,14 +1,8 @@
 import tkinter as tk
+# from tkinter import ttk
 #from numpy import genfromtxt
-
-WINDOW_HEIGHT = 800
-WINDOW_WIDTH = 800
-SEARCH_VARIANT = [
-    "thread",
-    "diameter",
-    "main sizes",
-    "angle"
-]
+from constants import WINDOW_HEIGHT, WINDOW_WIDTH
+from search_page import SearchPage
 
 
 class MainApp(tk.Tk):
@@ -30,52 +24,12 @@ class MainApp(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-
-class ResultPage(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        listbox = tk.Listbox(self, height=WINDOW_HEIGHT - 200)
-        listbox.pack(side="left")
-        for elem in ["test", "sdgdgdf", "asfsfsdf"]:
-            listbox.insert(tk.END, elem)
-
-        button = tk.Button(self, text="StartPage",
-                           command=lambda: controller.show_frame(StartPage))
-        button.pack()
+    def show_result(self, **kwargs):
+        frame = self.frames[ResultPage]
+        frame.tkraise()
+        frame.find_result(**kwargs)
 
 
-class StartPage(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Start page")
-        label.pack()
-        button = tk.Button(self, text="Result",
-                           command=lambda: controller.show_frame(SearchPage))
-        button.pack()
-
-
-class SearchPage(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.param_frame = {}
-        self.grid_rowconfigure(3)
-        label = tk.Label(self, text="Search page")
-        label.grid(row=1, ipadx=WINDOW_WIDTH / 2 - 50, ipady=30)
-        self.param = tk.StringVar(self)
-        self.param.set(SEARCH_VARIANT[0])
-        choose_box = tk.OptionMenu(self, self.param, *SEARCH_VARIANT)
-        choose_box.grid(row=2)
-        self.param.trace('w', self.change_param)
-        #thread instrument
-        self.param_frame[SEARCH_VARIANT[0]] = tk.Frame(self)
-
-    def change_param(self, *args):
-        print(self.param.get())
-
-    def change_param_frame(self, param):
 
 
 
