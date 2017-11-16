@@ -33,9 +33,12 @@ class MainApp(tk.Tk):
         frame.tkraise()
         frame.find_result(**kwargs)
 
-win = MainApp()
-win.title(TITLE[LANG])
-win.geometry(str(WINDOW_HEIGHT)+'x'+str(WINDOW_WIDTH))
-win.resizable(False, False)
 
-win.mainloop()
+if __name__ == '__main__':
+    win = MainApp()
+    win.title(TITLE[LANG])
+    win.geometry(str(WINDOW_HEIGHT)+'x'+str(WINDOW_WIDTH))
+    win.iconbitmap('app_icon.ico')
+    win.resizable(False, False)
+
+    win.mainloop()

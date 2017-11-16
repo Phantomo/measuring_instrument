@@ -1,10 +1,10 @@
 WINDOW_HEIGHT = 800
 WINDOW_WIDTH = 800
 SEARCH_VARIANT = [
-    "screw thread",
+    "screw_thread",
     "diameter",
-    "main sizes",
+    "main_sizes",
     "angle",
-    "surface roughness",
+    "surface_roughness",
     "indicator"
 ]
