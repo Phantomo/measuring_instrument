@@ -4,8 +4,8 @@ from tkinter import messagebox
 from tkinter import scrolledtext as tkst
 import result_page as rp
 from languages import THREAD_RB_TYPE, LANG, SP_SEARCH, SP_L_ACCURACY, SP_L_DIAMETER, SP_L_STEP, SP_L_ADD_INFO, \
-    SP_SEARCH_PAGE, SP_SIZE, SP_SEARCH_VARIANT
-
+    SP_SEARCH_PAGE, SP_SIZE, SP_SEARCH_VARIANT, SP_BACK
+import start_page as sp
 
 class SearchPage(tk.Frame):
 
@@ -34,6 +34,8 @@ class SearchPage(tk.Frame):
             frame.grid(row=0, column=0, sticky='nsew')
             self.param_frame[F] = frame
         self.show_frame(SEARCH_VARIANT[0])
+        back_button = tk.Button(self, text=SP_BACK[LANG], command=lambda: controller.show_frame(sp.StartPage))
+        back_button.grid(row=4)
 
     def change_param(self, *args):
         self.show_frame(SP_SEARCH_VARIANT[LANG][self.param.get()])

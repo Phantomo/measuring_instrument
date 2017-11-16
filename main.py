@@ -38,7 +38,7 @@ if __name__ == '__main__':
     win = MainApp()
     win.title(TITLE[LANG])
     win.geometry(str(WINDOW_HEIGHT)+'x'+str(WINDOW_WIDTH))
-    win.iconbitmap('app_icon.ico')
+    win.iconbitmap('app_icon2.ico')
     win.resizable(False, False)
 
     win.mainloop()
