@@ -3,6 +3,10 @@ import tkinter as tk
 #from numpy import genfromtxt
 from constants import WINDOW_HEIGHT, WINDOW_WIDTH
 from search_page import SearchPage
+from languages import TITLE, LANG
+from result_page import ResultPage
+from start_page import StartPage
+from info_page import InfoPage
 
 
 class MainApp(tk.Tk):
@@ -14,10 +18,10 @@ class MainApp(tk.Tk):
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
-        for F in (ResultPage, StartPage, SearchPage):
+        for F in (ResultPage, StartPage, SearchPage, InfoPage):
             frame = F(container, self)
-            self.frames[F] = frame
             frame.grid(row=0, column=0, sticky='nsew')
+            self.frames[F] = frame
         self.show_frame(StartPage)
 
     def show_frame(self, cont):
@@ -29,12 +33,8 @@ class MainApp(tk.Tk):
         frame.tkraise()
         frame.find_result(**kwargs)
 
-
-
-
-
 win = MainApp()
-win.title('Measuring instrument')
+win.title(TITLE[LANG])
 win.geometry(str(WINDOW_HEIGHT)+'x'+str(WINDOW_WIDTH))
 win.resizable(False, False)
 
