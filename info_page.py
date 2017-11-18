@@ -2,6 +2,7 @@ import tkinter as tk
 import start_page as sp
 from languages import IP_BACK, IP_INFO, LANG
 
+
 class InfoPage(tk.Frame):
 
     def __init__(self, parent, controller):

@@ -1,6 +1,5 @@
 import tkinter as tk
 # from tkinter import ttk
-#from numpy import genfromtxt
 from constants import WINDOW_HEIGHT, WINDOW_WIDTH
 from search_page import SearchPage
 from languages import TITLE, LANG

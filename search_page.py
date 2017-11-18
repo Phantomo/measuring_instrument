@@ -7,6 +7,7 @@ from languages import THREAD_RB_TYPE, LANG, SP_SEARCH, SP_L_ACCURACY, SP_L_DIAME
     SP_SEARCH_PAGE, SP_SIZE, SP_SEARCH_VARIANT, SP_BACK
 import start_page as sp
 
+
 class SearchPage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -111,25 +112,44 @@ class ThreadSearch(ISearchParam, tk.Frame):
         self.grid_columnconfigure(3)
 
         self.thread_choose = tk.StringVar()
-
         thread_variant = tk.StringVar()
         count = 1
         for key, value in THREAD_RB_TYPE[LANG].items():
-            tk.Radiobutton(self, text=value, variable=thread_variant, value=key).grid(row=count, column=1, sticky='w', padx=40)
+            radio_button = tk.Radiobutton(self, text=value, variable=thread_variant, value=key)
+            radio_button.grid(row=count, column=1, sticky='w', padx=40)
             count += 1
         label_step = tk.Label(self, text=SP_L_STEP[LANG])
         label_step.grid(row=1, column=2)
-
         self.step = tk.Entry(self)
-        self.step.grid(row=2, column=2)
+        self.step.grid(row=1, column=3)
+
+        label_accuracy = tk.Label(self, text=SP_L_ACCURACY[LANG])
+        label_accuracy.grid(row=2, column=2)
+        self.accuracy = tk.Entry(self)
+        self.accuracy.grid(row=2, column=3)
+
+        label_info = tk.Label(self, text=SP_L_ADD_INFO[LANG])
+        label_info.grid(row=5, column=2, columnspan=2, pady=20)
+        info_text = tkst.ScrolledText(self, wrap=tk.WORD)
+        info_text.grid(row=6, column=2, columnspan=2)
+        f = open('screw_thread_source.txt', 'r')
+        if f:
+            info_text.insert(tk.INSERT, f.read())
+        f.close()
         search_btn = tk.Button(self, text=SP_SEARCH[LANG])
-        search_btn.grid(row=5, column=2, columnspan=2, sticky='es')
+        search_btn.grid(row=7, column=1, columnspan=2, sticky='es')
 
     def get_step(self):
         return self.step
 
+    def get_accuracy(self):
+        return self.accuracy
+
     def check_param(self):
-        pass
+        if self.step is not None and self.step.isnumeric():
+            return None
+        else:
+            return "Step doesn't valid"
 
 
 class RoughnessSearch(ISearchParam, tk.Frame):
@@ -139,8 +159,17 @@ class RoughnessSearch(ISearchParam, tk.Frame):
         self.grid_rowconfigure(4)
         self.grid_columnconfigure(2)
 
+        self.choose_instrument = tk.StringVar()
+        count = 0
+        for key, name in SP_ROUGHNESS[LANG]:
+            radio_profilograph = tk.Radiobutton(self, text=name, variable=self.choose_instrument, value=key)
+            radio_profilograph.grid(row=count, column=1, padx=WINDOW_WIDTH-100)
+            count += 1
+
     def check_param(self):
-        pass
+        if self.choose_instrument in list(SP_ROUGHNESS[LANG].values()):
+            return None
+        return 'Please make your choice'
 
 
 class MainSizesSearch(ISearchParam, tk.Frame):
