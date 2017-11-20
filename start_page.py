@@ -1,8 +1,8 @@
 import tkinter as tk
-from languages import STP_ABOUT, STP_BTN_INFO, STP_BTN_SEARCH, LANG
+from languages import STP_ABOUT, STP_BTN_INFO, STP_BTN_SEARCH, LANG, STP_ADD
 import search_page as sp
 import info_page as ip
-
+import add_frame as add
 
 class StartPage(tk.Frame):
 
@@ -16,3 +16,5 @@ class StartPage(tk.Frame):
         search_button.grid(row=2, column=3)
         info_button = tk.Button(self, text=STP_BTN_INFO[LANG], command=lambda: controller.show_frame(ip.InfoPage))
         info_button.grid(row=2, column=2)
+        add_button = tk.Button(self, text=STP_ADD[LANG], command= lambda: controller.show_frame(add.AddInstrument))
+        add_button.grid(row=2, column=4)

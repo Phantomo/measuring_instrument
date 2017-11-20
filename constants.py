@@ -8,3 +8,4 @@ SEARCH_VARIANT = [
     "surface_roughness",
     "indicator"
 ]
+DATABASE = 'database.json'

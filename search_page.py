@@ -160,15 +160,15 @@ class RoughnessSearch(ISearchParam, tk.Frame):
         self.grid_columnconfigure(2)
 
         self.choose_instrument = tk.StringVar()
-        count = 0
-        for key, name in SP_ROUGHNESS[LANG]:
-            radio_profilograph = tk.Radiobutton(self, text=name, variable=self.choose_instrument, value=key)
-            radio_profilograph.grid(row=count, column=1, padx=WINDOW_WIDTH-100)
-            count += 1
+        # count = 0
+        # for key, name in SP_ROUGHNESS[LANG]:
+        #     radio_profilograph = tk.Radiobutton(self, text=name, variable=self.choose_instrument, value=key)
+        #     radio_profilograph.grid(row=count, column=1, padx=WINDOW_WIDTH-100)
+        #     count += 1
 
     def check_param(self):
-        if self.choose_instrument in list(SP_ROUGHNESS[LANG].values()):
-            return None
+        # if self.choose_instrument in list(SP_ROUGHNESS[LANG].values()):
+        #     return None
         return 'Please make your choice'
 
 

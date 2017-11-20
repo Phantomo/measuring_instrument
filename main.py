@@ -6,7 +6,7 @@ from languages import TITLE, LANG
 from result_page import ResultPage
 from start_page import StartPage
 from info_page import InfoPage
-
+from add_frame import AddInstrument
 
 class MainApp(tk.Tk):
 
@@ -17,11 +17,11 @@ class MainApp(tk.Tk):
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
-        for F in (ResultPage, StartPage, SearchPage, InfoPage):
+        for F in (ResultPage, StartPage, SearchPage, InfoPage, AddInstrument):
             frame = F(container, self)
             frame.grid(row=0, column=0, sticky='nsew')
             self.frames[F] = frame
-        self.show_frame(StartPage)
+        self.show_frame(AddInstrument)
 
     def show_frame(self, cont):
         frame = self.frames[cont]

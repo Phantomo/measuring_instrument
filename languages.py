@@ -16,7 +16,7 @@ STP_ABOUT = {'en': "Hi, my name Oleg Zhovnuvatiy aka mr_oz\n" +
                     "програма створена для легкого вибору вимірювального інструменту"}
 STP_BTN_SEARCH = {'en': 'Search page', 'uk': 'Сторінка пошуку'}
 STP_BTN_INFO = {'en': 'Info', 'uk': 'Інфо'}
-
+STP_ADD = {'en': 'New instrument', 'uk': 'Новий інструмент'}
 #SearchPage
 SP_SEARCH_VARIANT_EN = {
     "Screw thread": 'screw_thread',
@@ -53,3 +53,25 @@ SP_BACK = {'en': 'Back', 'uk': 'Назад'}
 #Info page
 IP_BACK = {'en': '<-Back', 'uk': '<-Назад'}
 IP_INFO = {'en': 'Info', 'uk': 'Інформація'}
+#Add_frame_page
+ADD_TITLE = {'en': 'Add new instrument', 'uk': 'Додати новий елемент'}
+ADD_MEASURE_TYPE = {'en': 'Measuring types', 'uk': 'Вимірювальні параметри'}
+ADD_MEASURE_EN = {'Thread': 'thread',
+                  'Size': 'size',
+                  'Roughness': 'roughness',
+                  'Angle': 'angle',
+                  'Deviation': 'deviation'}
+ADD_MEASURE_UK = {'Різьба': 'thread',
+                  'Розмір': 'size',
+                  'Шорсткіть': 'roughness',
+                  'Кут': 'angle',
+                  'Відхилення': 'deviation'}
+ADD_MEASURE = {'en': ADD_MEASURE_EN, 'uk': ADD_MEASURE_UK}
+ADD_TYPE = {'en': 'Type', 'uk': 'Тип'}
+ADD_MODEL = {'en': 'Model', 'uk': 'Модель'}
+ADD_ACCURACY = {'en': 'Accuracy', 'uk': 'Точність'}
+ADD_BRAND = {'en': 'Brand', 'uk': 'Виробник'}
+ADD_PANEL = {'en': 'Panel', 'uk': 'Панель'}
+ADD_WEIGHT = {'en': 'Weight', 'uk': 'Вага'}
+ADD_BTN = {'en': 'Add', 'uk': 'Додати'}
+ADD_PANEL_TYPE = {'en': {'Analogue': 'analogue', 'Digital': 'digital'}, 'uk': {'Аналогова': 'analogue', 'Цифрова': 'digital'}}
