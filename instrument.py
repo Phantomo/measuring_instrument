@@ -15,6 +15,7 @@ def is_number(s):
         pass
     return False
 
+
 class Instrument(object):
 
     def __init__(self, inst_id):

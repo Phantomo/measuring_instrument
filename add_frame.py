@@ -38,3 +38,6 @@ class AddInstrument(tk.Frame):
         tk.Radiobutton(self, text=list(ADD_PANEL_TYPE[LANG].keys())[1], value=0, variable=self.panel).grid(row=8, column=4, sticky='w')
         tk.Button(self, text=SP_BACK[LANG], command=lambda: controller.show_frame(sp.StartPage)).grid(row=9, column=2)
         tk.Button(self, text=ADD_BTN[LANG], command=lambda: self.add_instrument()).grid(row=9, column=3)
+
+    def add_instrument(self):
+        
