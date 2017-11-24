@@ -4,7 +4,7 @@ import tkinter as tk
 from languages import ADD_TITLE, LANG, ADD_TYPE, ADD_MODEL, ADD_ACCURACY, ADD_BRAND, ADD_PANEL, ADD_WEIGHT, ADD_BTN, \
     ADD_MEASURE, ADD_PANEL_TYPE, SP_BACK, ADD_MEASURE_TYPE
 import start_page as sp
-
+from instrument import Instrument
 
 class AddInstrument(tk.Frame):
 
@@ -40,4 +40,4 @@ class AddInstrument(tk.Frame):
         tk.Button(self, text=ADD_BTN[LANG], command=lambda: self.add_instrument()).grid(row=9, column=3)
 
     def add_instrument(self):
-        
+        new = Instrument()

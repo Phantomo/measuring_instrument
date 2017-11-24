@@ -137,7 +137,7 @@ class ThreadSearch(ISearchParam, tk.Frame):
             info_text.insert(tk.INSERT, f.read())
         f.close()
         search_btn = tk.Button(self, text=SP_SEARCH[LANG])
-        search_btn.grid(row=7, column=1, columnspan=2, sticky='es')
+        search_btn.grid(row=7, column=1, columnspan=2, sticky='es', padx=20)
 
     def get_step(self):
         return self.step

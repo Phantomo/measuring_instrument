@@ -50,6 +50,7 @@ SP_L_ACCURACY = {'en': 'Accuracy', 'uk': 'Точність'}
 SP_L_ADD_INFO = {'en': 'Additional information', 'uk': 'Додаткова інформація'}
 SP_SIZE = {'en': 'Size', 'uk': 'Розмір'}
 SP_BACK = {'en': 'Back', 'uk': 'Назад'}
+# SP_ROUGHNESS = {''}
 #Info page
 IP_BACK = {'en': '<-Back', 'uk': '<-Назад'}
 IP_INFO = {'en': 'Info', 'uk': 'Інформація'}

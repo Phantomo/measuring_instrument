@@ -36,7 +36,7 @@ class MainApp(tk.Tk):
 if __name__ == '__main__':
     win = MainApp()
     win.title(TITLE[LANG])
-    win.geometry(str(WINDOW_HEIGHT)+'x'+str(WINDOW_WIDTH))
+    win.geometry(str(WINDOW_WIDTH)+'x'+str(WINDOW_HEIGHT))
     win.iconbitmap('app_icon2.ico')
     win.resizable(False, False)
 
