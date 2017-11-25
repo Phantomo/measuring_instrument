@@ -4,6 +4,8 @@ from tkinter import messagebox
 
 
 def is_number(s):
+    if s is None:
+        return False
     try:
         float(s)
         return True
@@ -95,7 +97,7 @@ class Instrument(object):
             return True
         return False
 
-    def __dict__(self):
+    def instrument_dict(self):
         ins = dict()
         ins['id'] = self._id
         ins['instrument_type'] = self._instrument_type
@@ -109,9 +111,11 @@ class Instrument(object):
         return ins
 
     def __str__(self):
-        return str(self.__dict__())
+        return str(self.instrument_dict())
 
     def add_record(self):
-        self.database['instrument'].append(self.__dict__)
+        print(self.database)
+        self.database['instrument'].append(self.instrument_dict())
+        print(str(self.database))
         with open(self.database_path, 'w') as f:
-            json.dump(self.database, f)
+            f.write(json.dumps(self.database))

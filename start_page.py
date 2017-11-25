@@ -4,6 +4,7 @@ import search_page as sp
 import info_page as ip
 import add_frame as add
 
+
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
