@@ -2,7 +2,6 @@ import tkinter as tk
 from constants import WINDOW_HEIGHT
 from start_page import StartPage
 from tkinter import messagebox
-import json
 
 
 class ResultPage(tk.Frame):

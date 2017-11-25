@@ -114,8 +114,6 @@ class Instrument(object):
         return str(self.instrument_dict())
 
     def add_record(self):
-        print(self.database)
         self.database['instrument'].append(self.instrument_dict())
-        print(str(self.database))
         with open(self.database_path, 'w') as f:
             f.write(json.dumps(self.database))
