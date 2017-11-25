@@ -75,4 +75,5 @@ ADD_BRAND = {'en': 'Brand', 'uk': 'Виробник'}
 ADD_PANEL = {'en': 'Panel', 'uk': 'Панель'}
 ADD_WEIGHT = {'en': 'Weight', 'uk': 'Вага'}
 ADD_BTN = {'en': 'Add', 'uk': 'Додати'}
-ADD_PANEL_TYPE = {'en': {'Analogue': 'analogue', 'Digital': 'digital'}, 'uk': {'Аналогова': 'analogue', 'Цифрова': 'digital'}}
+ADD_PANEL_TYPE = {'en': {'Analogue': 'analogue', 'Digital': 'digital'},
+                  'uk': {'Аналогова': 'analogue', 'Цифрова': 'digital'}}

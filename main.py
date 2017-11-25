@@ -8,6 +8,7 @@ from start_page import StartPage
 from info_page import InfoPage
 from add_frame import AddInstrument
 
+
 class MainApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
