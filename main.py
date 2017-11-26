@@ -7,6 +7,8 @@ from result_page import ResultPage
 from start_page import StartPage
 from info_page import InfoPage
 from add_frame import AddInstrument
+from constants import DATABASE
+from database_search import DatabaseWorker
 
 
 class MainApp(tk.Tk):
@@ -30,8 +32,9 @@ class MainApp(tk.Tk):
 
     def show_result(self, **kwargs):
         frame = self.frames[ResultPage]
+        database = DatabaseWorker(DATABASE)
+        frame.update_data(database.search(**kwargs))
         frame.tkraise()
-        frame.find_result(**kwargs)
 
 
 if __name__ == '__main__':

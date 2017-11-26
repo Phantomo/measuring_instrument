@@ -1,4 +1,5 @@
 import json
+from instrument import is_number
 
 
 class DatabaseWorker(object):
@@ -10,19 +11,40 @@ class DatabaseWorker(object):
             self._instrument = self._database['instrument']
 
     @staticmethod
-    def list_in_key_dict(param_list, **kwargs):
-        keys = kwargs.keys()
+    def list_in_key_dict(param_list, param_dict):
+        keys = param_dict.keys()
         for param in param_list:
             if param not in keys:
                 return False
         return True
 
-    def thread_search(self, **kwargs):
-        if self.list_in_key_dict(['step', 'accuracy'], **kwargs):
-            self.search_request()
+    def thread_search(self, param_dict):
+        if self.list_in_key_dict(['step', 'accuracy'], param_dict):
+            self.search_request(param_dict)
 
-    def search(self, **kwargs):
-        if 'type' in kwargs.keys():
+    @staticmethod
+    def measuring_type(db_item_type, need_type_param):
+        for key, value in db_item_type:
+            if key == need_type_param and value == True:
+                return True
+        return False
+
+    @staticmethod
+    def suitable(instrument, param):
+        instrument_keys = instrument.keys()
+        param_keys = param.keys()
+        if 'accuracy' in param_keys and 'accuracy' in instrument_keys and float(param['accuracy']) >= float(instrument['accuracy']):
+
+
+    def search_request(self, param):
+        instrument_list = []
+        for item in self._database:
+            if self.measuring_type(item['measuring_type'], param['type']) and self.suitable(item, param=param):
+                instrument_list.append(item)
+
+    def search(self, param_dict):
+        if 'type' in param_dict.keys():
+
 
 
 

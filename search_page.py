@@ -60,6 +60,9 @@ class ISearchParam(object):
     def check_param(self):
         raise NotImplementedError("Should have implemented this")
 
+    def search_request(self):
+        raise NotImplementedError("Should have implemented this")
+
 
 class DiameterSearch(ISearchParam, tk.Frame):
 
@@ -83,8 +86,11 @@ class DiameterSearch(ISearchParam, tk.Frame):
         if f:
             info_text.insert(tk.INSERT, f.read())
         f.close()
-        search_btn = tk.Button(self, text=SP_SEARCH[LANG])
+        search_btn = tk.Button(self, text=SP_SEARCH[LANG], command=self.search_request())
         search_btn.grid(row=5, column=2, columnspan=2, padx=100)
+
+    def search_request(self):
+
 
     def get_size(self):
         return self.size
