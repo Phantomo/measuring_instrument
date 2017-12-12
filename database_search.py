@@ -1,5 +1,4 @@
 import json
-from instrument import is_number
 
 
 class DatabaseWorker(object):
@@ -33,7 +32,8 @@ class DatabaseWorker(object):
     def suitable(instrument, param):
         instrument_keys = instrument.keys()
         param_keys = param.keys()
-        if 'accuracy' in param_keys and 'accuracy' in instrument_keys and float(param['accuracy']) >= float(instrument['accuracy']):
+        # if 'accuracy' in param_keys and 'accuracy' in instrument_keys and float(param['accuracy']) >= float(instrument['accuracy']):
+        #
 
 
     def search_request(self, param):
@@ -56,5 +56,4 @@ class DatabaseWorker(object):
                 self.roughness_search(**kwargs)
             elif type_search == 'angle':
                 self.angle_search(**kwargs)
-            elif
 

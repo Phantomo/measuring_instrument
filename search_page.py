@@ -90,7 +90,7 @@ class DiameterSearch(ISearchParam, tk.Frame):
         search_btn.grid(row=5, column=2, columnspan=2, padx=100)
 
     def search_request(self):
-
+        pass
 
     def get_size(self):
         return self.size
