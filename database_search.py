@@ -23,6 +23,13 @@ class DatabaseWorker(object):
 
     def search(self, **kwargs):
         if 'type' in kwargs.keys():
-
-
-
+            type_search = kwargs['type']
+            if type_search == 'thread':
+                self.thread_search(**kwargs)
+            elif type_search == 'size':
+                self.size_search(**kwargs)
+            elif type_search == 'roughness':
+                self.roughness_search(**kwargs)
+            elif type_search == 'angle':
+                self.angle_search(**kwargs)
+            elif

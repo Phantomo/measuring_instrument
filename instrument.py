@@ -37,6 +37,7 @@ class Instrument(object):
         self._indicator_panel = 'analogue'
         self._weight = None
         self._additional_inf = None
+        self._max_value = None
 
     def _next_id_(self):
         with open(self.database_path, 'r') as f:
@@ -66,6 +67,9 @@ class Instrument(object):
 
     def set_brand(self, brand):
         self._brand = brand
+
+    def set_max_value(self, value):
+        self._max_value = value
 
     def set_indicator_panel(self, indicator_panel):
         if indicator_panel == 'analogue' or indicator_panel == 'digital':
@@ -108,6 +112,7 @@ class Instrument(object):
         ins['indicator_panel'] = self._indicator_panel
         ins['weight'] = self._weight
         ins['additional_information'] = self._additional_inf
+        ins['max_value'] = self._max_value
         return ins
 
     def __str__(self):

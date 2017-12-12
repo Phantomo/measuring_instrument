@@ -77,3 +77,4 @@ ADD_WEIGHT = {'en': 'Weight', 'uk': 'Вага'}
 ADD_BTN = {'en': 'Add', 'uk': 'Додати'}
 ADD_PANEL_TYPE = {'en': {'Analogue': 'analogue', 'Digital': 'digital'},
                   'uk': {'Аналогова': 'analogue', 'Цифрова': 'digital'}}
+ADD_MAX_VALUE = {'en': 'Max value', 'uk': 'Макс. значення'}
